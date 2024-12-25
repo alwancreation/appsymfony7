@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% trans %}Log in!{% endtrans %}{% endblock %}
+{% block stylesheets %}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Meow+Script&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('assets/css/login.css') }}">
+{% endblock %}
+
+
+{% block body %}
+    <div class="login-container">
+    <form method="post" class="login-form">
+        {% if error %}
+            <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+        {% endif %}
+
+        {% if app.user %}
+            <div class="mb-3">
+                {% trans %}You are logged in as{% endtrans %} {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">{% trans %}Logout{% endtrans %}</a>
+            </div>
+        {% endif %}
+
+        <h1 class="h3 mb-3 font-weight-normal">{% trans %}Please sign in{% endtrans %}</h1>
+        <label for="username">{% trans %}Email{% endtrans %}</label>
+        <input type="email" value="{{ last_username }}" name="_username" id="username" class="form-control" autocomplete="email" required autofocus>
+        <label for="password">{% trans %}Password{% endtrans %}</label>
+        <input type="password" name="_password" id="password" class="form-control" autocomplete="current-password" required>
+
+        <input type="hidden" name="_csrf_token"
+               value="{{ csrf_token('authenticate') }}"
+        >
+
+        <button class="btn btn-lg btn-primary" type="submit">
+            {% trans %}Sign in{% endtrans %}
+        </button>
+    </form>
+    </div>
+{% endblock %}
