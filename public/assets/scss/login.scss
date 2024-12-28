@@ -1,0 +1,137 @@
+$p: hsl(213deg 85% 97%);
+$s: hsl(233deg 36% 38%);
+* {
+  font-family: Roboto, sans-serif;
+}
+
+@mixin screen {
+  background: $p;
+  padding: 2em;
+  display: flex;
+  flex-direction: column;
+  border-radius: 12px;
+  box-shadow: 0 0 2em hsla(0, 0%, 0%, 0.10);
+}
+
+body {
+  user-select: none;
+  overflow-y: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: hsl(218deg 50% 91%);
+  height: 100vh;
+  background-image: url('../images/bg-login.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.screen-1 {
+  @include screen;
+  width: 300px;
+  gap: 1em;
+
+  .logo {
+    margin-top: -3em
+  }
+
+  .email {
+    background: hsl(0deg 0% 100%);
+    box-shadow: 0 0 2em hsl(231deg 62% 94%);
+    padding: 1em;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+    border-radius: 8px;
+    color: hsl(0deg 0% 30%);
+
+    .sec-2 {
+      display: flex;
+    }
+
+    input {
+      outline: none;
+      border: none;
+      background-color: hsl(218deg 50% 91%);
+      display: block;
+      padding: 10px 15px;
+      border-radius: 5px;
+      width: 100%;
+
+      &::placeholder {
+        color: hsl(0deg 0% 0%);
+        font-size: 0.9em;
+      }
+    }
+
+    ion-icon {
+      color: hsl(0deg 0% 30%);
+      margin-bottom: -.2em;
+    }
+  }
+
+  .password {
+    background: hsl(0deg 0% 100%);
+    box-shadow: 0 0 2em hsl(231deg 62% 94%);
+    padding: 1em;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+    border-radius: 8px;
+    color: hsl(0deg 0% 30%);
+
+    .sec-2 {
+      display: flex;
+    }
+
+    input {
+      outline: none;
+      border: none;
+      background-color: hsl(218deg 50% 91%);
+      display: block;
+      padding: 10px 15px;
+      border-radius: 5px;
+      width: 100%;
+
+      &::placeholder {
+        color: hsl(0deg 0% 0%);
+        font-size: 0.9em;
+      }
+    }
+
+    ion-icon {
+      color: hsl(0deg 0% 30%);
+      margin-bottom: -.2em;
+    }
+
+    .show-hide {
+      margin-right: -5em;
+    }
+  }
+
+  .login {
+    padding: 1em;
+    background: hsl(233deg 36% 38%);
+    color: hsl(0 0 100);
+    border: none;
+    border-radius: 30px;
+    font-weight: 600;
+  }
+
+  .footer {
+    display: flex;
+    font-size: 0.7em;
+    color: hsl(0deg 0% 37%);
+    gap: 14em;
+    padding-bottom: 10em;
+
+    span {
+      cursor: pointer
+    }
+  }
+}
+
+button {
+  cursor: pointer;
+}
