@@ -1,0 +1,195 @@
+
+$adminSideBarColor: #191919;
+$adminTopBarColor: #2e2e2e;
+.header-nav-left img{
+  margin: 0 auto;
+  width: 160px;
+}
+.header-nav-left{
+  padding: 30px 15px;
+  text-align: center;
+  background-color: $adminSideBarColor;
+}
+
+.sidebar{
+  background-color: lighten($adminSideBarColor,5%);
+}
+.navigation{
+  border-bottom: 1px solid $adminSideBarColor;
+}
+.navigation > li{
+  border-top: 1px solid $adminSideBarColor;
+  &:hover > a{
+    background-color: lighten($adminSideBarColor,8%);
+    border-left-color: #fff;
+  }
+}
+.select2-container--default .select2-selection--single{
+  border-radius: 0;
+  height: 34px;
+  padding: 2px;
+  border: solid 1px #dddddd;
+}
+.login-wrapper {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 280px;
+  margin-left: -140px;
+  margin-top: -250px;
+}
+.form-control + .form-control, .input-group + .input-group{
+  margin-top: 0;
+}
+
+.modal-body{
+  padding: 15px;
+}
+.btn-xs{
+  padding: 2px 5px 2px 5px !important;
+  font-size: 10px !important;
+  margin: 1px !important;
+}
+.form-control.select2-container{
+  padding: 0 !important;
+}
+
+.select-sim-not-used+.select2 .select2-selection__rendered:after{
+  content: attr(title);
+  display: inline-block;
+}
+.stats-title{
+  font-size: 13px;
+  color: #8b8b8b;
+  font-weight: normal;
+  margin-bottom: 5px;
+  padding-bottom: 5px;
+  border-bottom: solid 1px #e7e7e7;
+}
+.table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td{
+  padding: 3px 5px;
+}
+.text-right-sm{
+  text-align: right;
+  @media screen and (max-width: 767px) {
+    text-align: left;
+    margin-top: 0 !important;
+  }
+}
+.page-header .page-title h3{
+  padding: 10px 0 !important;
+}
+.panel-transfers{
+  border: none;
+  .panel-heading{
+    padding-left: 0;
+  }
+  .panel-body{
+    padding: 0;
+  }
+}
+
+
+
+
+.breadcrumb-line{
+  margin-bottom: 15px;
+}
+
+.datatable-styled{
+  .dataTables_length{
+    margin: 0;
+    padding: 0;
+  }
+  .select2-container{
+    padding: 0;
+    min-width: 70px;
+  }
+  .dataTables_filter{
+    padding-bottom: 10px;
+  }
+}
+
+
+/*Callandar styles*/
+/* line 83, ../scss/style.scss */
+.calendar-day {
+  font-size: 11px !important;
+  text-align: center;
+  padding: 5px;
+}
+/* line 87, ../scss/style.scss */
+.calendar-day:hover {
+  background-color: #EFEFEF;
+}
+
+/* line 91, ../scss/style.scss */
+.calendar-day.currentDay {
+  background-color: #EFEFEF;
+}
+/* line 93, ../scss/style.scss */
+.calendar-day.currentDay span.currentDay {
+  display: inline-block;
+  padding: 2px 4px;
+  border-radius: 50%;
+  background-color: #fcbd79;
+}
+
+/* line 100, ../scss/style.scss */
+.calendar-day.currentDay a {
+  color: #fff;
+}
+
+/* line 105, ../scss/style.scss */
+.calendar-day.disponible.currentDay {
+  background-color: #155608;
+}
+
+/* line 108, ../scss/style.scss */
+.calendar-day.disponible.currentDay a {
+  color: #fff;
+}
+
+/* line 111, ../scss/style.scss */
+.calendar-day.disponible {
+  background-color: #1d790a;
+}
+
+/* line 114, ../scss/style.scss */
+.calendar-day.disponible a {
+  color: #fff;
+}
+
+/* line 118, ../scss/style.scss */
+.calendar-day.non-disponible {
+  background-color: #727572;
+}
+
+/* line 121, ../scss/style.scss */
+.calendar-day.non-disponible a {
+  color: #fff;
+}
+
+.navbar-inverse{
+  background-color: $adminTopBarColor;
+  min-height: 55px;
+  box-shadow: 0px 1px 8px rgba(0, 0, 0, 0.16);
+  .navbar-brand{
+    height: 55px;
+    width: 170px;
+    background-repeat: no-repeat;
+    background-position: center center;
+    line-height: 20;
+    overflow: hidden;
+    -webkit-background-size: contain;
+    background-size: contain;
+  }
+  .sidebar-toggle{
+    top: 16px;
+  }
+}
+.sidebar-wide .sidebar{
+  .sidebar-content{
+    margin-top: 55px;
+  }
+}

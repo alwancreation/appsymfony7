@@ -1,0 +1,97 @@
+{% extends 'admin/base.html.twig' %}
+
+
+{% block body %}
+    <!-- Page header -->
+    <div class="page-header">
+        <div class="page-title">
+            <h3>
+                {% trans from 'admin' %}Edit home section{% endtrans %}
+                <small>{% trans from 'admin' %}Edit home section{% endtrans %}</small>
+            </h3>
+        </div>
+
+    </div>
+    <!-- Breadcrumbs line -->
+    <div class="breadcrumb-line">
+        <ul class="breadcrumb">
+            <li><a href="{{ url('admin_default_index') }}">{% trans from 'admin' %}Home{% endtrans %}</a></li>
+            <li><a href="{{ url('pages_index') }}">{% trans from 'admin' %}Pages{% endtrans %}</a></li>
+            <li><a href="{{ url('pages_edit',{'id':section.page.pageId,"lang":editable_lang}) }}">{{ section.page.pageTitle }}</a></li>
+            <li class="active">{% trans from 'admin' %}Edit home section{% endtrans %}</li>
+        </ul>
+    </div>
+    <div class="content">
+        <div class="row">
+            <div class="col-sm-6">
+                {#<ul class="nav nav-tabs">#}
+                    {#{% for language in app_languages %}#}
+                        {#<li role="presentation" class="{% if editable_lang == language %}active{% endif %}"><a href="{{ path(app.request.get('_route'), app.request.get('_route_params')|merge({'lang': language})) }}" >{{ language }}</a></li>#}
+                    {#{% endfor %}#}
+                {#</ul>#}
+                {% if section.mainAsset %}
+                <div class="panel panel-default">
+                	<div class="panel-body">
+
+                            <img src="{{ asset('uploads/images/home/'~section.mainAsset.assetBasePath) }}" alt="" class="img-responsive">
+
+                	</div>
+                </div>
+                {% endif %}
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        {{ form_start(edit_form) }}
+                        {{ form_widget(edit_form) }}
+                        <input type="submit" class="btn btn-primary" value="{% trans from 'admin' %}Edit{% endtrans %}" />
+                        {{ form_end(edit_form) }}
+                    </div>
+                </div>
+            </div>
+            {% if section.sectionType!=7 %}
+
+
+            <div class="col-sm-6">
+
+                        {% for asset in section.assets %}
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <div class="row">
+                            {% if asset.assetBasePath %}
+                                <div class="col-xs-3">
+                                    <img src="{{ asset('uploads/images/home/'~asset.assetBasePath) }}" class="img-responsive" alt="">
+                                </div>
+                            {% endif %}
+
+                            <div class="col-xs-9">
+                                <div>
+                                    <b>{{ asset.assetTitle }}</b>
+                                    <div>{{ asset.assetDescription }}</div>
+                                    <a class="btn btn-xs btn-danger" onclick="return confirm('Confirm !')" href="{{ url('section_delete_asset',{'id':asset.assetId,'section_id':section.sectionId}) }}">{% trans from 'admin' %}Delete{% endtrans %}</a>
+                                    <a class="btn btn-xs btn-success" href="{{ url('section_edit_asset',{'id':asset.assetId,'section_id':section.sectionId,"lang":editable_lang}) }}">{% trans from 'admin' %}Edit{% endtrans %}</a>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                        {% endfor %}
+
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        {{ form_start(assetForm) }}
+                        {{ form_widget(assetForm) }}
+                        <input type="submit" class="btn btn-primary" value="{% trans from 'admin' %}Add{% endtrans %}" />
+                        {{ form_end(assetForm) }}
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <a href="{{ url('pages_edit',{'id':section.page.pageId,"lang":editable_lang}) }}" class="btn btn-default">{% trans from 'admin' %}Back to the list{% endtrans %}</a>
+        </div>
+    </div>
+{% endblock %}

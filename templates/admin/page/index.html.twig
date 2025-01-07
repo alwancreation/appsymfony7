@@ -1,0 +1,52 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block body %}
+
+    <!-- Page header -->
+    <div class="page-header">
+        <div class="page-title">
+            <h3>
+                {% trans from 'admin' %}Pages{% endtrans %}
+                <small>{% trans from 'admin' %}Pages{% endtrans %}</small>
+            </h3>
+        </div>
+    </div>
+    <!-- Breadcrumbs line -->
+    <div class="breadcrumb-line">
+        <ul class="breadcrumb">
+            <li><a href="{{ url('admin_default_index') }}">{% trans from 'admin' %}Home{% endtrans %}</a></li>
+            <li class="active">{% trans from 'admin' %}Pages{% endtrans %}</li>
+        </ul>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <a href="{{ path('pages_new') }}"
+               class="btn btn-primary btn-sm pull-right">{% trans from 'admin' %}Create a new
+                page{% endtrans %}</a>
+            <h6 class="panel-title">{% trans from 'admin' %}Pages{% endtrans %}</h6>
+        </div>
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th>{% trans %}Page name{% endtrans %}</th>
+                <th>{% trans %}Page url{% endtrans %}</th>
+                <th width="120">{% trans %}Actions{% endtrans %}</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for page in pages %}
+                <tr>
+
+                    <td><a href="{{ path('pages_edit', { 'id': page.pageId }) }}">{{ page.pageTitle }}</a></td>
+                    <td>/{{ page.pageUrl }}</td>
+                    <td class="text-right">
+                        <a class="btn btn-mini btn-success"
+                           href="{{ path('pages_edit', { 'id': page.pageId }) }}">{% trans %}edit{% endtrans %}</a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+    </div>
+{% endblock %}

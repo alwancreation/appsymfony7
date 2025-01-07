@@ -1,0 +1,117 @@
+{% extends "admin/base.html.twig" %}
+{% block body %}
+    <div class="page-header">
+        <div class="page-title">
+            <h3>
+                {% trans from 'admin' %}App Settings{% endtrans %}
+                <small>{% trans from 'admin' %}Application settings{% endtrans %}</small>
+            </h3>
+        </div>
+    </div>
+    <!-- Breadcrumbs line -->
+    <div class="breadcrumb-line">
+        <ul class="breadcrumb">
+            <li><a href="{{ url('admin_default_index') }}">{% trans from 'admin' %}Home{% endtrans %}</a></li>
+            <li class="active">{% trans from 'admin' %}App Settings{% endtrans %}</li>
+        </ul>
+    </div>
+    <div class="content">
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <form action="{{ url('settings_update') }}" method="post" role="form" enctype="multipart/form-data">
+                            <div class="form-group">
+                                <label for="">{% trans from 'admin' %}Application name{% endtrans %}</label>
+                                <input type="text" class="form-control" name="application_name" value="{{ app_settings.application_name }}" id="application_name" placeholder="">
+                            </div>
+                            <div class="form-group">
+                                <label for="">{% trans from 'admin' %}Application email{% endtrans %}</label>
+                                <input type="text" class="form-control" name="application_email" value="{{ app_settings.application_email }}" id="application_email" placeholder="">
+                            </div>
+                            <div class="form-group">
+                                <label for="">{% trans from 'admin' %}Application phone{% endtrans %}</label>
+                                <input type="text" class="form-control" name="application_phone" value="{{ app_settings.application_phone }}" id="application_phone" placeholder="">
+                            </div>
+                            <div class="form-group">
+                                <label for="">{% trans from 'admin' %}Application gsm{% endtrans %}</label>
+                                <input type="text" class="form-control" name="application_gsm" value="{{ app_settings.application_gsm }}" id="application_gsm" placeholder="">
+                            </div>
+                            <div class="form-group">
+                                <label for="">{% trans from 'admin' %}Application address{% endtrans %}</label>
+                                <input type="text" class="form-control" name="application_address" value="{{ app_settings.application_address }}" id="application_address" placeholder="">
+                            </div>
+                            <div class="form-group">
+                                <label for="">{% trans from 'admin' %}Application location{% endtrans %}</label>
+                                <input type="text" class="form-control" name="application_location" value="{{ app_settings.application_location }}" id="application_location" placeholder="">
+                            </div>
+                            <div class="form-group">
+                                <label for="">{% trans from 'admin' %}Application description{% endtrans %}</label>
+                                <input type="text" class="form-control" name="application_description" value="{{ app_settings.application_description }}" id="application_description" placeholder="">
+                            </div>
+                            <div class="form-group">
+                                {% if app_settings.application_logo %}
+                                    <img src="{{ asset("uploads/settings/"~app_settings.application_logo) }}" alt="" style="max-width: 200px">
+                                    <hr>
+                                {% endif %}
+                                <label for="">{% trans from 'admin' %}Application logo{% endtrans %}</label>
+                                <input type="file" name="application_logo" id="application_logo" >
+                            </div>
+                            <button type="submit" class="btn btn-primary">{% trans from 'admin' %}Update{% endtrans %}</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">{% trans from "admin" %}Social Settings{% endtrans %}</h3>
+                    </div>
+                    <div class="panel-body">
+                        <form action="{{ url('settings_update') }}" method="post" role="form" enctype="multipart/form-data">
+                            <div class="form-group">
+                                <label for="">{% trans from 'admin' %}Application Facebook{% endtrans %}</label>
+                                <input type="text" class="form-control" name="application_facebook" value="{{ app_settings.application_facebook }}" id="application_facebook" placeholder="">
+                            </div>
+                            <div class="form-group">
+                                <label for="">{% trans from 'admin' %}Application Youtube{% endtrans %}</label>
+                                <input type="text" class="form-control" name="application_youtube" value="{{ app_settings.application_youtube }}" id="application_youtube" placeholder="">
+                            </div>
+                            <div class="form-group">
+                                <label for="">{% trans from 'admin' %}Application Instagram{% endtrans %}</label>
+                                <input type="text" class="form-control" name="application_instagram" value="{{ app_settings.application_instagram }}" id="application_instagram" placeholder="">
+                            </div>
+                            <div class="form-group">
+                                <label for="">{% trans from 'admin' %}Application Twitter{% endtrans %}</label>
+                                <input type="text" class="form-control" name="application_twitter" value="{{ app_settings.application_twitter }}" id="application_twitter" placeholder="">
+                            </div>
+                            <div class="form-group">
+                                <label for="">{% trans from 'admin' %}Application Linkedin{% endtrans %}</label>
+                                <input type="text" class="form-control" name="application_linkedin" value="{{ app_settings.application_linkedin }}" id="application_linkedin" placeholder="">
+                            </div>
+                            <div class="form-group">
+                                <label for="">{% trans from 'admin' %}Application Pinterest{% endtrans %}</label>
+                                <input type="text" class="form-control" name="application_pinterest" value="{{ app_settings.application_pinterest }}" id="application_pinterest" placeholder="">
+                            </div>
+                            <div class="form-group">
+                                <label for="">{% trans from 'admin' %}Application Viadeo{% endtrans %}</label>
+                                <input type="text" class="form-control" name="application_viadeo" value="{{ app_settings.application_viadeo }}" id="application_viadeo" placeholder="">
+                            </div>
+                            <div class="form-group">
+                                <label for="">{% trans from 'admin' %}Application Telegram{% endtrans %}</label>
+                                <input type="text" class="form-control" name="application_telegram" value="{{ app_settings.application_telegram }}" id="application_telegram" placeholder="">
+                            </div>
+                            <div class="form-group">
+                                <label for="">{% trans from 'admin' %}Application TikTok{% endtrans %}</label>
+                                <input type="text" class="form-control" name="application_tiktok" value="{{ app_settings.application_tiktok }}" id="application_tiktok" placeholder="">
+                            </div>
+
+                            <button type="submit" class="btn btn-primary">{% trans from 'admin' %}Update{% endtrans %}</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+{% endblock %}

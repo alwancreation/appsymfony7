@@ -2,18 +2,21 @@
 
 namespace App\Controller\Admin;
 
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
-use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
-class IndexController extends AbstractController
-{
-    #[Route(path: '/', name: 'admin_index')]
-    public function index(): Response
+class IndexController  extends AbstractController {
+    private $em;
+    function __construct(EntityManagerInterface $em)
     {
-        return $this->render('index/index.html.twig', [
-
-        ]);
+        $this->em = $em;
     }
+
+    #[Route('/', name: 'admin_default_index', methods: ['GET'])]
+    public function index()
+    {
+        return $this->render("admin/index/index.html.twig");
+    }
+
 }

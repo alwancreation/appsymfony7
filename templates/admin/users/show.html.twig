@@ -1,0 +1,144 @@
+{% extends "admin/base.html.twig" %}
+{% block body %}
+
+    <div class="page-content-inner">
+
+
+        <!-- Page header -->
+        <div class="page-header">
+            <div class="page-title">
+                <h3>{% trans from "admin" %}Show user{% endtrans %}
+                    <small>{% trans from "admin" %}Show user{% endtrans %}</small>
+                </h3>
+            </div>
+
+
+        </div>
+        <!-- /page header -->
+
+
+        <!-- Breadcrumbs line -->
+        <div class="breadcrumb-line">
+            <ul class="breadcrumb">
+                <li><a href="{{ url('admin_default_index') }}">{% trans from "admin" %}Home{% endtrans %}</a></li>
+                <li><a href="{{ url('users') }}">{% trans from "admin" %}Users{% endtrans %}</a></li>
+                <li class="active">{% trans from "admin" %}Show user{% endtrans %}</li>
+            </ul>
+
+
+        </div>
+
+        <!-- Profile grid -->
+        <div class="row">
+            <div class="col-sm-2">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        {% if user.asset %}
+                            <div class="thumbnail">
+                                <div class="thumb">
+                                    <img src="{{ asset('uploads/users/'~user.asset.assetBasePath) }}" class="img-responsive" alt="">
+                                </div>
+                            </div>
+                        {% endif %}
+                        <div class="caption text-center">
+                            <h4>{{ user }}</h4>
+                        </div>
+                        <table class="table table-hover">
+                            <tbody>
+                            <tr>
+                                <td>{% trans from 'admin' %}Email{% endtrans %} : {{ user.email }}</td>
+                            </tr>
+                            <tr>
+                                <td>{% trans from 'admin' %}Phone{% endtrans %} : {{ user.userPhone }}</td>
+                            </tr>
+                            <tr>
+                                <td>{% trans from 'admin' %}Address{% endtrans %} : {{ user.userAddress }}</td>
+                            </tr>
+                            <tr>
+                                <td>{% trans from 'admin' %}Enabled{% endtrans %} : {{ user.enabled?'Yes':'No' }}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+            {% if user.role('ROLE_DRIVER') %}
+                <div class="col-sm-8">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h6 class="panel-title">{% trans from 'admin' %}Driver info{% endtrans %}</h6>
+                        </div>
+                        <div class="panel-body">
+
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h6 class="panel-title">{% trans from 'admin' %}Driver identity card{% endtrans %}</h6>
+                                </div>
+                                <div class="panel-body">
+                                    {% if user.assetIdentity %}
+                                        <img src="{{ asset('uploads/users/'~user.assetIdentity.assetBasePath) }}" class="img-responsive" style="max-height: 200px" alt="">
+                                    {% else %}
+                                        {% trans from 'admin' %}No document found{% endtrans %}
+                                    {% endif %}
+                                </div>
+                            </div>
+
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h6 class="panel-title">{% trans from 'admin' %}Driver license card{% endtrans %}</h6>
+                                </div>
+                                <div class="panel-body">
+                                    {% if user.assetDriverLicense %}
+                                        <img src="{{ asset('uploads/users/'~user.assetDriverLicense.assetBasePath) }}" class="img-responsive" style="max-height: 200px" alt="">
+                                    {% else %}
+                                        {% trans from 'admin' %}No document found{% endtrans %}
+                                    {% endif %}
+                                    {% if user.driverLicenseExpirationDate %}
+                                        <hr>
+                                        {% trans from 'admin' %}Expiration date{% endtrans %} : <b>{{ user.driverLicenseExpirationDate|date("d/M/Y") }}</b>
+                                    {% endif %}
+                                </div>
+                            </div>
+
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h6 class="panel-title">{% trans from 'admin' %}Driver medical visit{% endtrans %}</h6>
+                                </div>
+                                <div class="panel-body">
+                                    {% if user.assetMedicalVisit %}
+                                        <img src="{{ asset('uploads/users/'~user.assetMedicalVisit.assetBasePath) }}" class="img-responsive" style="max-height: 200px" alt="">
+                                    {% else %}
+                                        {% trans from 'admin' %}No document found{% endtrans %}
+                                    {% endif %}
+                                    {% if user.medicalVisitExpirationDate %}
+                                        <hr>
+                                        {% trans from 'admin' %}Expiration date{% endtrans %} : <b>{{ user.medicalVisitExpirationDate|date("d/M/Y") }}</b>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h6 class="panel-title">{% trans from 'admin' %}Driver origin{% endtrans %}</h6>
+                                </div>
+                                <div class="panel-body">
+                                    {% trans from 'admin' %}Internal driver{% endtrans %} : {{ user.internal?'Yes':'No' }}
+                                    {% if user.startDate %}
+                                        <hr>
+                                        {% trans from 'admin' %}Start date{% endtrans %} : <b>{{ user.startDate|date("d/M/Y") }}</b>
+                                    {% endif %}
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+
+
+        </div>
+    </div>
+
+
+{% endblock %}

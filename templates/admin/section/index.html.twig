@@ -1,0 +1,52 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block body %}
+<!-- Page header -->
+<div class="page-header">
+    <div class="page-title">
+        <h3>
+            {% trans from 'admin' %}Home sections{% endtrans %}
+            <small>{% trans from 'admin' %}Home sections{% endtrans %}</small>
+        </h3>
+    </div>
+
+</div>
+<!-- Breadcrumbs line -->
+<div class="breadcrumb-line">
+    <ul class="breadcrumb">
+        <li><a href="{{ url('admin_default_index') }}">{% trans from 'admin' %}Home{% endtrans %}</a></li>
+        <li class="active">{% trans from 'admin' %}Home sections{% endtrans %}</li>
+    </ul>
+</div>
+<div class="content">
+    <div class="panel panel-default">
+    	<div class="panel-body">
+            <a href="{{ path('section_new',{id:1}) }}">{% trans from 'admin' %}Create a new section{% endtrans %}</a>
+    	</div>
+    </div>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>{% trans from 'admin' %}Sectiontitle{% endtrans %}</th>
+                <th>{% trans from 'admin' %}Sectionorder{% endtrans %}</th>
+                <th>{% trans from 'admin' %}Actions{% endtrans %}</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for section in sections %}
+            <tr>
+                <td><a href="{{ path('section_edit', { 'id': section.sectionId }) }}">{{ section.sectionTitle }}</a></td>
+
+                <td>{{ section.sectionOrder }}</td>
+                <td>
+                   <a href="{{ path('section_delete', { 'id': section.sectionId }) }}" class="btn btn-xs btn-danger">{% trans from 'admin' %}delete{% endtrans %}</a>
+                   <a href="{{ path('section_edit', { 'id': section.sectionId }) }}" class="btn btn-xs btn-primary">{% trans from 'admin' %}edit{% endtrans %}</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+
+    </div>
+{% endblock %}

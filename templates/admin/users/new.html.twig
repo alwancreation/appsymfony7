@@ -1,0 +1,52 @@
+{% extends "admin/base.html.twig" %}
+{% block body %}
+
+
+    <div class="page-header">
+        <div class="page-title">
+            <h3>
+                {% trans from 'admin' %}Users{% endtrans %}
+                <small>{% trans from 'admin' %}Add new user{% endtrans %}</small>
+            </h3>
+        </div>
+
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h6 class="panel-title">
+                {% trans from 'admin' %}Add new User{% endtrans %}
+            </h6>
+        </div>
+        <div class="panel-body">
+
+
+            <div class="row">
+
+                <div class="col-sm-6">
+
+                    {{ form_start(form) }}
+                    {{ form_errors(form) }}
+
+                    {{ form_widget(form) }}
+
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary">Create</button>
+                    </div>
+
+                    {{ form_end(form) }}
+
+                    <div class="panel panel-default">
+                    	<div class="panel-body">
+                            <a href="{{ path('users') }}" class="btn btn-default">
+                                {% trans from 'admin' %}Back to list{% endtrans %}
+                            </a>
+                    	</div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

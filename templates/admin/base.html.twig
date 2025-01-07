@@ -1,14 +1,160 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}
-        {% endblock %}
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=vehicle-width, initial-scale=1">
+  <title>{% block title %}{{ app_settings.application_name }}{% endblock %}</title>
+  <link href="{{ asset('assets/admin/css/select2.min.css') }}" rel="stylesheet" type="text/css">
+  <link href="{{ asset('assets/admin/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css">
+  <link href="{{ asset('assets/admin/css/londinium-theme.min.css') }}" rel="stylesheet" type="text/css">
+  <link href="{{ asset('assets/admin/css/styles.min.css') }}" rel="stylesheet" type="text/css">
+  <link href="{{ asset('assets/admin/css/icons.min.css') }}" rel="stylesheet" type="text/css">
+  <link href="{{ asset("assets/admin/css/dropzone.css") }}" rel="stylesheet" type="text/css"/>
 
-        {% block javascripts %}{% endblock %}
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-    </body>
+  <link href="//fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&amp;subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
+  {% block javascripts %}
+
+  <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+  <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js"></script>
+
+  <script type="text/javascript" src="{{ asset("assets/admin/js/plugins/charts/flot.js") }}"></script>
+  <script type="text/javascript" src="{{ asset("assets/admin/js/plugins/charts/flot.orderbars.js") }}"></script>
+  <script type="text/javascript" src="{{ asset("assets/admin/js/plugins/charts/flot.pie.js") }}"></script>
+  <script type="text/javascript" src="{{ asset("assets/admin/js/plugins/charts/flot.time.js") }}"></script>
+  <script type="text/javascript" src="{{ asset("assets/admin/js/plugins/charts/flot.animator.min.js") }}"></script>
+  <script type="text/javascript" src="{{ asset("assets/admin/js/plugins/charts/excanvas.min.js") }}"></script>
+  <script type="text/javascript" src="{{ asset("assets/admin/js/plugins/charts/flot.resize.min.js") }}"></script>
+  <script type="text/javascript" src="{{ asset("assets/admin/js/plugins/charts/sparkline.min.js") }}"></script>
+  <script type="text/javascript" src="{{ asset("assets/admin/js/plugins/charts/jquery.flot.categories.js") }}"></script>
+
+  <script type="text/javascript" src="{{ asset('assets/admin/js/plugins/charts/sparkline.min.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('assets/admin/js/plugins/forms/uniform.min.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('assets/admin/js/plugins/forms/select2.min.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('assets/admin/js/plugins/forms/inputmask.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('assets/admin/js/plugins/forms/autosize.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('assets/admin/js/plugins/forms/inputlimit.min.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('assets/admin/js/plugins/forms/listbox.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('assets/admin/js/plugins/forms/multiselect.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('assets/admin/js/plugins/forms/validate.min.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('assets/admin/js/plugins/forms/tags.min.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('assets/admin/js/plugins/forms/switch.min.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('assets/admin/js/plugins/forms/uploader/plupload.full.min.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('assets/admin/js/plugins/forms/uploader/plupload.queue.min.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('assets/admin/js/plugins/forms/wysihtml5/wysihtml5.min.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('assets/admin/js/plugins/forms/wysihtml5/toolbar.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('assets/admin/js/plugins/interface/daterangepicker.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('assets/admin/js/plugins/interface/fancybox.min.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('assets/admin/js/plugins/interface/moment.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('assets/admin/js/plugins/interface/jgrowl.min.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('assets/admin/js/plugins/interface/datatables.min.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('assets/admin/js/plugins/interface/colorpicker.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('assets/admin/js/plugins/interface/fullcalendar.min.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('assets/admin/js/plugins/interface/timepicker.min.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('assets/admin/js/plugins/interface/collapsible.min.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('assets/admin/js/bootstrap.min.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('//cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.6/Chart.min.js') }}"></script>
+  <script type="text/javascript" src="{{ asset("assets/admin/js/dropzone.js") }}"></script>
+  <script type="text/javascript" src="{{ asset("assets/admin/js/ckeditor/ckeditor.js") }}"></script>
+  <script type="text/javascript" src="{{ asset('assets/admin/js/application.js') }}"></script>
+  <script src="{{ asset('assets/admin/js/responsive-calendar/js/responsive-calendar.js') }}"></script>
+  <script src="{{ asset('assets/admin/js/datetimepicker-master/jquery.datetimepicker.js') }}"></script>
+  <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+  <script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
+
+
+  {% endblock %}
+  <link href="{{ asset('assets/admin/js/responsive-calendar/css/responsive-calendar.css') }}" rel="stylesheet">
+  <link href="{{ asset('assets/admin/js/datetimepicker-master/jquery.datetimepicker.css') }}" rel="stylesheet">
+  <link href="{{ asset('assets/admin/css/main.css?v=1.0') }}" rel="stylesheet">
+
+
+  <link rel="apple-touch-icon" sizes="57x57" href="/assets/images/favicon/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/assets/images/favicon/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/assets/images/favicon/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/assets/images/favicon/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/assets/images/favicon/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/assets/images/favicon/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/assets/images/favicon/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/assets/images/favicon/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/favicon/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192"  href="/assets/images/favicon/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/assets/images/favicon/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicon/favicon-16x16.png">
+  <link rel="manifest" href="manifest.json">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="/assets/images/favicon/ms-icon-144x144.png">
+  <meta name="theme-color" content="#ee3539">
+</head>
+<body class="{% block bodyclasses %}sidebar-wide{% endblock %}">
+<!-- Navbar -->
+{% block navbarmenu %}
+  <div class="navbar navbar-inverse" role="navigation">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="{{ url("admin_default_index") }}" style="{% if app_settings.application_logo is not null %}background-image:url({{ asset("uploads/settings/"~app_settings.application_logo) }}){% endif %}">{{ app_settings.application_name }}</a>
+      <a class="sidebar-toggle"><i class="icon-paragraph-justify2"></i></a>
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-icons">
+        <span class="sr-only">Toggle navbar</span>
+        <i class="icon-grid3"></i>
+      </button>
+      <button type="button" class="navbar-toggle offcanvas">
+        <span class="sr-only">Toggle navigation</span>
+        <i class="icon-paragraph-justify2"></i>
+      </button>
+    </div>
+
+    <ul class="nav navbar-nav navbar-right collapse" id="navbar-icons">
+
+
+      <li class="user dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown">
+          <img src="{{ asset('assets/admin/images/profile.png') }}" alt="">
+          <span>{{app.user}}</span>
+          <i class="caret"></i>
+        </a>
+        <ul class="dropdown-menu dropdown-menu-right icons-right">
+          <li><a href="{{ url('app_logout') }}"><i class="icon-exit"></i> {{ 'Logout'|trans([],'admin') }}</a></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+{% endblock %}
+<!-- Page container -->
+<div class="page-container">
+  {% block mainmenu %}
+    <div class="sidebar collapse">
+      <div class="sidebar-content">
+        <div class="user-menu dropdown">
+          <div class="header-nav-left">
+              {% if app_settings.application_logo is null %}
+                <a href="{{ url('admin_default_index') }}"><img src="{{ asset('assets/admin/images/logo.png') }}" class="img-responsive" alt=""></a>
+              {% else %}
+                <a href="{{ url('admin_default_index') }}"><img src="{{ asset("uploads/settings/"~app_settings.application_logo) }}" class="img-responsive" alt=""></a>
+              {% endif %}
+          </div>
+        </div>
+        <!-- Main navigation -->
+        <ul class="navigation">
+          <li><a href="{{ url("admin_default_index") }}"><span>{% trans from "admin" %}Dashboard{% endtrans %}</span> <i class="icon-home"></i></a></li>
+          <li><a href="{{ url('pages_index') }}"><span>{% trans from 'admin' %}Pages{% endtrans %}</span> <i class="icon-file"></i></a></li>
+          <li><a href="{{ url('settings_index') }}"><span>{% trans from 'admin' %}Settings{% endtrans %}</span> <i class="icon-cog"></i></a></li>
+          <li><a href="{{ url('users') }}"><span>{% trans from 'admin' %}Users{% endtrans %}</span> <i class="icon-users"></i></a></li>
+
+        </ul>
+      </div>
+    </div>
+  {% endblock %}
+  <!-- Page content -->
+  <div class="page-content">
+    <!-- Page tabs -->
+    {% block body %}{% endblock %}
+    <!-- /page tabs -->
+  </div>
+  <!-- /page content -->
+</div>
+<!-- /page container -->
+<!-- /navbar -->
+{% block javascript %}{% endblock %}
+</body>
 </html>

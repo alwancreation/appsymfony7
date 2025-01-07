@@ -1,0 +1,118 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block body %}
+
+    <!-- Page header -->
+    <div class="page-header">
+        <div class="page-title">
+            <h3>
+                {% trans from 'admin' %}Page edit{% endtrans %}
+                <small>{% trans from 'admin' %}Page edit{% endtrans %}</small>
+            </h3>
+        </div>
+    </div>
+    <!-- Breadcrumbs line -->
+    <div class="breadcrumb-line">
+        <ul class="breadcrumb">
+            <li><a href="{{ url('admin_default_index') }}">{% trans from 'admin' %}Home{% endtrans %}</a></li>
+            <li><a href="{{ url('pages_index') }}">{% trans from 'admin' %}Pages{% endtrans %}</a></li>
+            <li class="active">{% trans from 'admin' %}Page edit{% endtrans %}</li>
+        </ul>
+    </div>
+    <div class="row">
+        <div class="col-sm-6">
+            {#<ul class="nav nav-tabs">#}
+                {#{% for language in app_languages %}#}
+                    {#<li role="presentation" class="{% if editable_lang == language %}active{% endif %}"><a href="{{ path(app.request.get('_route'), app.request.get('_route_params')|merge({'lang': language})) }}" >{{ language }}</a></li>#}
+                {#{% endfor %}#}
+            {#</ul>#}
+            <!-- Page tabs -->
+            <div class="tabbable page-tabs">
+                <ul class="nav nav-tabs" style="margin-bottom: -1px;">
+                    <li class="active"><a href="#page" data-toggle="tab"><i class="icon-paragraph-justify2"></i> {% trans from 'admin' %}Page details{% endtrans %}</a></li>
+                    <li><a href="#meta" data-toggle="tab"><i class="icon-code"></i> {% trans from 'admin' %}Meta tags{% endtrans %}</a></li>
+                </ul>
+
+                <div class="tab-content">
+
+                    <!-- First tab -->
+                    <div class="tab-pane active fade in" id="page">
+
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                {{ form_start(edit_form) }}
+                                    {{ form_widget(edit_form) }}
+                                    <div class="form-group">
+                                        <input type="submit" class="btn btn-primary" value="Edit"/>
+                                    </div>
+                                {{ form_end(edit_form) }}
+
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade in" id="meta">
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                {{ form_start(meta_form) }}
+                                {{ form_widget(meta_form) }}
+                                <div class="form-group">
+                                    <input type="submit" class="btn btn-primary" value="{% trans from 'admin' %}Update{% endtrans %}"/>
+                                </div>
+                                {{ form_end(meta_form) }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-sm-6">
+            {% if page.asset %}
+                <div class="panel panel-default">
+                	<div class="panel-body">
+                        <img class="img-responsive" src="{{ asset('uploads/originals/'~page.asset.assetBasepath) }}" alt="">
+                    </div>
+                </div>
+            {% endif %}
+            
+            <div class="panel panel-default">
+            	<div class="panel-body">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <a href="{{ path('section_new',{'id':page.pageId}) }}" class="btn btn-primary">
+                                <i class="icon-plus"></i>
+                                {% trans from 'admin' %}Create a new section{% endtrans %}</a>
+                        </div>
+                    </div>
+                    <table class="table table-bordered">
+                        <thead>
+                        <tr>
+                            <th>{% trans from 'admin' %}Sectiontitle{% endtrans %}</th>
+                            <th>{% trans from 'admin' %}Sectionorder{% endtrans %}</th>
+                            <th>{% trans from 'admin' %}Actions{% endtrans %}</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for section in page.sections %}
+                            <tr>
+                                <td><a href="{{ path('section_edit', { 'id': section.sectionId }) }}">{{ section.sectionTitle }}</a></td>
+
+                                <td>{{ section.sectionOrder }}</td>
+                                <td width="150">
+                                    <a href="{{ path('section_edit', { 'id': section.sectionId,"lang":editable_lang }) }}" class="btn btn-xs btn-primary"><i class="icon-pencil"></i> {% trans from 'admin' %}edit{% endtrans %}</a>
+                                    <a href="{{ path('section_duplicate', { 'id': section.sectionId,"lang":editable_lang }) }}" class="btn btn-xs btn-info" title="{% trans from 'admin' %}duplicate{% endtrans %}"><i class="icon-copy"></i></a>
+
+                                    <a href="{{ path('section_delete', { 'id': section.sectionId }) }}" class="btn btn-xs btn-danger" onclick="return confirm ('Confirm !')" title="{% trans from 'admin' %}delete{% endtrans %}"><i class="icon-remove"></i></a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+            	</div>
+            </div>
+            
+        </div>
+    </div>
+
+{% endblock %}

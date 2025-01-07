@@ -32,6 +32,91 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column]
     private ?string $password = null;
 
+
+    // enebled
+    #[ORM\Column(type: 'boolean')]
+    private bool $enabled = true;
+
+    // first name
+    #[ORM\Column(length: 180)]
+    private ?string $firstName = null;
+
+    // last name
+    #[ORM\Column(length: 180)]
+    private ?string $lastName = null;
+
+
+    // lastLogin
+    #[ORM\Column(type: 'datetime', nullable: true)]
+    private ?\DateTimeInterface $lastLogin = null;
+
+    /**
+     * @return \DateTimeInterface|null
+     */
+    public function getLastLogin(): ?\DateTimeInterface
+    {
+        return $this->lastLogin;
+    }
+
+    /**
+     * @param \DateTimeInterface|null $lastLogin
+     */
+    public function setLastLogin(?\DateTimeInterface $lastLogin): void
+    {
+        $this->lastLogin = $lastLogin;
+    }
+
+
+    /**
+     * @return bool
+     */
+    public function isEnabled(): bool
+    {
+        return $this->enabled;
+    }
+
+    /**
+     * @param bool $enabled
+     */
+    public function setEnabled(bool $enabled): void
+    {
+        $this->enabled = $enabled;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getFirstName(): ?string
+    {
+        return $this->firstName;
+    }
+
+    /**
+     * @param string|null $firstName
+     */
+    public function setFirstName(?string $firstName): void
+    {
+        $this->firstName = $firstName;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getLastName(): ?string
+    {
+        return $this->lastName;
+    }
+
+    /**
+     * @param string|null $lastName
+     */
+    public function setLastName(?string $lastName): void
+    {
+        $this->lastName = $lastName;
+    }
+
+
+
     public function getId(): ?int
     {
         return $this->id;
@@ -83,6 +168,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
+    // hasRole
+    public function hasRole($role){
+        return in_array($role, $this->getRoles());
+    }
+
     /**
      * @see PasswordAuthenticatedUserInterface
      */
@@ -106,4 +196,27 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
     }
+
+    public function __toString(): string
+    {
+        return $this->email.'';
+    }
+
+    static $rolesArray = [
+        'ROLE_USER' => 'ROLE_USER',
+        'ROLE_ADMIN' => 'ROLE_ADMIN',
+        'ROLE_SUPER_ADMIN' => 'ROLE_SUPER_ADMIN',
+    ];
+
+    // getRolesArrayKies
+    public function getRolesArrayKies(){
+        $roles = self::$rolesArray;
+        $rolesArray = [];
+        foreach($roles as $key => $role){
+            $rolesArray[$key] = $role;
+        }
+        return $rolesArray;
+    }
+
+
 }
