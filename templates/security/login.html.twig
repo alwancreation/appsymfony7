@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="{{ asset('assets/css/login.css') }}">
 {% endblock %}
 
-
+{% block header %}{% endblock %}
 {% block body %}
     <form method="post" class="screen-1">
         {% if error %}
@@ -37,3 +37,4 @@
         <button class="login" type="submit">{% trans %}Login{% endtrans %}</button>
     </form>
 {% endblock %}
+{% block footer %}{% endblock %}
