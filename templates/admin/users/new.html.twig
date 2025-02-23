@@ -5,11 +5,17 @@
     <div class="page-header">
         <div class="page-title">
             <h3>
-                {% trans from 'admin' %}Users{% endtrans %}
+                {% trans from 'admin' %}User add{% endtrans %}
                 <small>{% trans from 'admin' %}Add new user{% endtrans %}</small>
             </h3>
         </div>
-
+    </div>
+    <div class="breadcrumb-line">
+        <ul class="breadcrumb">
+            <li><a href="{{ url('admin_default_index') }}">{% trans from 'admin' %}Home{% endtrans %}</a></li>
+            <li><a href="{{ url('users') }}">{% trans from 'admin' %}Users{% endtrans %}</a></li>
+            <li class="active">{% trans from 'admin' %}User new{% endtrans %}</li>
+        </ul>
     </div>
     <div class="panel panel-default">
         <div class="panel-heading">

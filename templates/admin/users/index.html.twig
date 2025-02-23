@@ -7,15 +7,26 @@
         <div class="page-title">
             <h3>
                 {% trans from "admin" %}Users{% endtrans %}
-                <small>{% trans from "admin" %}Users{% endtrans %}</small>
+                <small>{% trans from "admin" %}Users list{% endtrans %}</small>
             </h3>
         </div>
-        <div class="range">
-            <a href="{{ url('users_new') }}" class="btn btn-success btn-sm pull-right">
-                <i class="fa fa-plus"></i> {% trans from "admin" %}New User{% endtrans %}
+    </div>
+
+    <div class="breadcrumb-line">
+        <ul class="breadcrumb">
+            <li><a href="{{ url('admin_default_index') }}">{% trans from 'admin' %}Home{% endtrans %}</a></li>
+            <li class="active">{% trans from 'admin' %}Users{% endtrans %}</li>
+        </ul>
+        <div class="pull-right" style="padding: 2px">
+            <a href="{{ url('users_profiles') }}" class="btn btn-info btn-sm">
+                <i class="icon-users"></i> {% trans from "admin" %}Profiles{% endtrans %}
+            </a>
+            <a href="{{ url('users_new') }}" class="btn btn-success btn-sm">
+                <i class="icon-plus"></i> {% trans from "admin" %}New User{% endtrans %}
             </a>
         </div>
     </div>
+
     <div class="panel panel-default">
         <div class="panel-heading">
             <h6 class="panel-title">
@@ -32,7 +43,7 @@
                         <th>{% trans from "admin" %}Contact{% endtrans %}</th>
                         <th>{% trans from "admin" %}Enabled{% endtrans %}</th>
                         <th>{% trans from "admin" %}Last Login{% endtrans %}</th>
-                        <th>{% trans from "admin" %}Role{% endtrans %}</th>
+                        <th>{% trans from "admin" %}Profile{% endtrans %}</th>
                         <th>{% trans from "admin" %}Email{% endtrans %}</th>
                         <th></th>
                     </tr>
@@ -49,9 +60,11 @@
                                 {% endif %}
                                 </td>
                             <td>{{ (entity.lastLogin)?entity.lastLogin|date('d/m/Y H:i:s') }} </td>
-                            <td>{% if entity.hasRole('ROLE_ADMIN') %}
-                                    {% trans from 'admin' %}Administrator{% endtrans %}
-                                
+                            <td>
+                                {% if entity.profile %}
+                                    <a href="{{ path('profile_edit', { 'id': entity.profile.id }) }}">
+                                        {{ entity.profile }}
+                                    </a>
                                 {% endif %}
                             </td>
                             <td>{{ entity.email }}</td>

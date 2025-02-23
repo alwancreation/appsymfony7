@@ -1,6 +1,6 @@
 twig:
     file_name_pattern: '*.twig'
-    form_themes: ['bootstrap_5_layout.html.twig']
+    form_themes: ['bootstrap_4_layout.html.twig']
     globals:
         site_name: 'My Awesome Site'
         site_url: 'https://www.example.com'

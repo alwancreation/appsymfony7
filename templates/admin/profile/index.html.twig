@@ -1,0 +1,77 @@
+{% extends "admin/base.html.twig" %}
+
+{% block body %}
+
+
+    <div class="page-header">
+        <div class="page-title">
+            <h3>
+                {% trans from "admin" %}Users Profiles{% endtrans %}
+                <small>{% trans from "admin" %}Users Profiles{% endtrans %}</small>
+            </h3>
+        </div>
+    </div>
+
+    <div class="breadcrumb-line">
+        <ul class="breadcrumb">
+            <li><a href="{{ url('admin_default_index') }}">{% trans from 'admin' %}Home{% endtrans %}</a></li>
+            <li><a href="{{ url('users') }}">{% trans from 'admin' %}Users{% endtrans %}</a></li>
+            <li class="active">{% trans from 'admin' %}Profiles{% endtrans %}</li>
+        </ul>
+        <div class="pull-right" style="padding: 2px">
+            <a href="{{ url('profile_new') }}" class="btn btn-success btn-sm">
+                <i class="icon-plus"></i> {% trans from "admin" %}New{% endtrans %}
+            </a>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h6 class="panel-title">
+                {% trans from "admin" %}Users Profiles{% endtrans %}
+            </h6>
+        </div>
+        <div class="panel-body">
+            <div class="datatable">
+
+
+                <table class="table table-bordered">
+                    <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Name</th>
+                        <th>Roles</th>
+                        <th>actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for profile in profiles %}
+                        <tr>
+                            <td>{{ profile.id }}</td>
+                            <td>{{ profile.name }}</td>
+                            <td>
+                                {% for role in profile.arrayRoles %}
+                                    <span class="badge badge-primary">{{ role }}</span>
+                                {% endfor %}
+                            </td>
+                            <td>
+                                <a class="btn btn-primary btn-sm" href="{{ path('profile_edit', {'id': profile.id}) }}"><i class="icon-pen"></i> {% trans %}edit{% endtrans %}</a>
+                                <a class="btn btn-danger btn-sm" href="{{ path('profile_delete', {'id': profile.id}) }}" onclick="return confirm('Are you sure?')"><i class="icon-remove"></i> {% trans %}delete{% endtrans %}</a>
+                            </td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="4">no records found</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+
+
+            </div>
+        </div>
+
+    </div>
+
+
+{% endblock %}

@@ -114,7 +114,7 @@
           <i class="caret"></i>
         </a>
         <ul class="dropdown-menu dropdown-menu-right icons-right">
-          <li><a href="{{ url('app_logout') }}"><i class="icon-exit"></i> {{ 'Logout'|trans([],'admin') }}</a></li>
+          <li><a href="{{ url('app_logout') }}"><i class="icon-exit"></i> {% trans from 'admin' %}Logout{% endtrans %}</a></li>
         </ul>
       </li>
     </ul>
@@ -139,7 +139,7 @@
           <li><a href="{{ url("admin_default_index") }}"><span>{% trans from "admin" %}Dashboard{% endtrans %}</span> <i class="icon-home"></i></a></li>
           <li><a href="{{ url('pages_index') }}"><span>{% trans from 'admin' %}Pages{% endtrans %}</span> <i class="icon-file"></i></a></li>
           <li><a href="{{ url('settings_index') }}"><span>{% trans from 'admin' %}Settings{% endtrans %}</span> <i class="icon-cog"></i></a></li>
-          <li><a href="{{ url('users') }}"><span>{% trans from 'admin' %}Users{% endtrans %}</span> <i class="icon-users"></i></a></li>
+          <li><a href="{{ url('users') }}"><span>{% trans from 'admin' %}Users & Profile{% endtrans %}</span> <i class="icon-users"></i></a></li>
 
         </ul>
       </div>

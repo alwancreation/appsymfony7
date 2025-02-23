@@ -1,15 +1,20 @@
 {% extends "admin/base.html.twig" %}
 {% block body %}
 
-
     <div class="page-header">
         <div class="page-title">
             <h3>
-                {% trans from "admin" %}User{% endtrans %}
-                <small>{% trans from "admin" %}Edit{% endtrans %}</small>
+                {% trans from "admin" %}User edit{% endtrans %}
+                <small>{% trans from "admin" %}User edit information{% endtrans %}</small>
             </h3>
         </div>
-
+    </div>
+    <div class="breadcrumb-line">
+        <ul class="breadcrumb">
+            <li><a href="{{ url('admin_default_index') }}">{% trans from 'admin' %}Home{% endtrans %}</a></li>
+            <li><a href="{{ url('users') }}">{% trans from 'admin' %}Users{% endtrans %}</a></li>
+            <li class="active">{% trans from 'admin' %}User edit{% endtrans %}</li>
+        </ul>
     </div>
     <div class="panel panel-default">
         <div class="panel-heading">
@@ -57,27 +62,16 @@
 
 
                 </div>
-                <div class="col-sm-4">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">{% trans from "admin" %}User Roles{% endtrans %}</div>
-                        <div class="panel-body">
-                            {{ form_start(edit_form_role) }}
-                            {{ form_errors(edit_form_role) }}
-                            {{ form_widget(edit_form_role) }}
-                            <div class="form-group">
-                                <button type="submit" class="btn btn-primary">{% trans from 'admin' %}Edit roles{% endtrans %}</button>
-                            </div>
-                            {{ form_end(edit_form_role) }}
-                        </div>
 
-                    </div>
-                </div>
             </div>
         </div>
         <div class="panel-footer">
+            <h6 class="panel-title">
             <a href="{{ path('users') }}" class="btn btn-default">
+                <i class="icon-arrow-left"></i>
                 {% trans from "admin" %}Back{% endtrans %}
             </a>
+            </h6>
         </div>
     </div>
 

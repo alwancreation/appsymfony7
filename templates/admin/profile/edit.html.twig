@@ -1,0 +1,34 @@
+{% extends "admin/base.html.twig" %}
+{% block title %}{% trans %}Edit User Profile{% endtrans %}{% endblock %}
+{% block body %}
+
+    <div class="page-header">
+        <div class="page-title">
+            <h3>
+                {% trans from "admin" %}Users Edit Profile{% endtrans %}
+                <small>{% trans from "admin" %}Users Edit Profile{% endtrans %}</small>
+            </h3>
+        </div>
+    </div>
+
+    <div class="breadcrumb-line">
+        <ul class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{{ url('admin_default_index') }}">{% trans %}Home{% endtrans %}</a></li>
+            <li class="breadcrumb-item"><a href="{{ url('users') }}">{% trans %}Users{% endtrans %}</a></li>
+            <li class="breadcrumb-item"><a href="{{ url('users_profiles') }}">{% trans %}Users Profiles{% endtrans %}</a></li>
+            <li class="breadcrumb-item active" aria-current="page">{% trans %}Edit{% endtrans %}</li>
+        </ul>
+    </div>
+
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h6 class="panel-title">
+                {% trans from "admin" %}Users Edit Profile{% endtrans %}
+            </h6>
+        </div>
+        <div class="panel-body">
+                            {{ include('admin/profile/_form.html.twig', {'button_label': 'Update'}) }}
+        </div>
+    </div>
+{% endblock %}
